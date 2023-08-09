@@ -16,7 +16,7 @@ jobs:
         path: main
         submodules: 'recursive'
     - name: Compress Images
-      uses: calibreapp/webp-optimizer@master
+      uses: nemeaXYZ/webp-optimizer@v1.0.0-alpha
       with:
         githubToken: ${{ secrets.GITHUB_TOKEN }}
     - name: upload
