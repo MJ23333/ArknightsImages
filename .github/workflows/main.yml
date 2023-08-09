@@ -15,10 +15,14 @@ jobs:
       with:
         path: main
         submodules: 'recursive'
+    - name: Compress Images
+      uses: calibreapp/webp-optimizer@master
+      with:
+        githubToken: ${{ secrets.GITHUB_TOKEN }}
     - name: upload
       uses: haloislet/cos-action@v2
       with:
-        COMMAND: coscmd upload -r ./ /
+        COMMAND: coscmd upload -r ./ / --include "*.webp"
         SECRET_ID: ${{ secrets.SECRET_ID }}
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         BUCKET: ${{ secrets.BUCKET }}
