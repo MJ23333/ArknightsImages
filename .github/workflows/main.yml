@@ -15,14 +15,18 @@ jobs:
       with:
         path: main
         submodules: 'recursive'
-    - name: Compress Images
-      uses: calibreapp/image-actions@main
-      with:
-        githubToken: ${{ secrets.GITHUB_TOKEN }}
     - name: upload
       uses: haloislet/cos-action@v2
       with:
-        COMMAND: coscmd upload -r ./ / --include "*.webp"
+        COMMAND: coscmd upload -r ./main/Arknight-Images/avg/backgrounds /avg/backgrounds
+        SECRET_ID: ${{ secrets.SECRET_ID }}
+        SECRET_KEY: ${{ secrets.SECRET_KEY }}
+        BUCKET: ${{ secrets.BUCKET }}
+        REGION: ${{ secrets.REGION }}
+    - name: upload
+      uses: haloislet/cos-action@v2
+      with:
+        COMMAND: coscmd upload -r ./main/Arknight-Images/avg/images /avg/images
         SECRET_ID: ${{ secrets.SECRET_ID }}
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
         BUCKET: ${{ secrets.BUCKET }}
